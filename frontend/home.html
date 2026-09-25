@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>StreamOne | Início</title>
+
+    <meta
+      name="description"
+      content="Catálogo, progresso e conteúdos da sua assinatura."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+  </head>
+
+  <body class="home-page">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="./home.html" aria-label="StreamOne">
+          <span class="brand-mark">
+            <i class="fa-solid fa-play"></i>
+          </span>
+
+          <span class="brand-text">Stream<span>One</span></span>
+        </a>
+
+        <nav class="main-nav" aria-label="Navegação principal">
+          <a href="#inicio" class="nav-link active">Início</a>
+          <a href="#continuar" class="nav-link">Continuar assistindo</a>
+          <a href="#catalogo" class="nav-link">Catálogo</a>
+        </nav>
+
+        <div class="topbar-actions">
+          <button
+            type="button"
+            class="icon-button"
+            id="search-button"
+            aria-label="Pesquisar"
+            title="Pesquisar"
+          >
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+
+          <div class="profile-menu">
+            <button
+              type="button"
+              class="profile-trigger"
+              id="profile-trigger"
+              aria-expanded="false"
+            >
+              <span class="profile-avatar" id="profile-avatar">US</span>
+
+              <span class="profile-copy">
+                <strong id="profile-name">Usuário</strong>
+                <small id="profile-role">Assinante</small>
+              </span>
+
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <div class="profile-dropdown" id="profile-dropdown">
+              <div class="profile-dropdown-header">
+                <span class="profile-avatar large" id="profile-avatar-menu">
+                  US
+                </span>
+
+                <div>
+                  <strong id="profile-name-menu">Usuário</strong>
+                  <small id="profile-email">usuario@streaming.local</small>
+                </div>
+              </div>
+
+              <div class="profile-dropdown-divider"></div>
+
+              <button
+                type="button"
+                class="profile-dropdown-item"
+                id="profile-refresh"
+              >
+                <i class="fa-solid fa-rotate"></i>
+                Atualizar sessão
+              </button>
+
+              <button
+                type="button"
+                class="profile-dropdown-item danger"
+                id="logout-button"
+              >
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                Sair da plataforma
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-backdrop" id="hero-backdrop"></div>
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content container">
+          <div class="hero-copy">
+            <div class="hero-badges">
+              <span class="badge badge-primary" id="hero-type">
+                Destaque
+              </span>
+
+              <span class="badge" id="hero-year">2026</span>
+            </div>
+
+            <h1 id="hero-title">Seu próximo conteúdo começa aqui.</h1>
+
+            <p id="hero-synopsis">
+              Explore o catálogo disponível na sua assinatura e continue de
+              onde parou.
+            </p>
+
+            <div class="hero-meta">
+              <span id="hero-duration">
+                <i class="fa-regular fa-clock"></i>
+                Catálogo disponível
+              </span>
+
+              <span id="hero-rating">
+                <i class="fa-solid fa-star"></i>
+                Descubra novos títulos
+              </span>
+            </div>
+
+            <div class="hero-actions">
+              <button type="button" class="hero-primary" id="hero-details">
+                <i class="fa-solid fa-circle-info"></i>
+                Ver detalhes
+              </button>
+
+              <button type="button" class="hero-secondary" id="hero-refresh">
+                <i class="fa-solid fa-shuffle"></i>
+                Outro destaque
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-indicator">
+            <span class="hero-indicator-line"></span>
+            <span>Em destaque</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section container" id="continuar">
+        <div class="section-heading">
+          <div>
+            <span class="section-eyebrow">Sua jornada</span>
+            <h2>Continue assistindo</h2>
+          </div>
+
+          <button type="button" class="text-button" id="refresh-history">
+            <i class="fa-solid fa-rotate"></i>
+            Atualizar
+          </button>
+        </div>
+
+        <div class="continue-grid" id="continue-list">
+          <div class="skeleton-card wide"></div>
+          <div class="skeleton-card wide"></div>
+        </div>
+
+        <div class="empty-state hidden" id="continue-empty">
+          <span class="empty-icon">
+            <i class="fa-solid fa-circle-play"></i>
+          </span>
+
+          <h3>Nenhum progresso por aqui ainda</h3>
+
+          <p>
+            Quando você começar a assistir algum conteúdo, ele aparecerá nesta
+            seção.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section container" id="catalogo">
+        <div class="section-heading">
+          <div>
+            <span class="section-eyebrow">Disponível para você</span>
+            <h2>Catálogo</h2>
+          </div>
+
+          <div class="catalog-actions">
+            <label class="search-field" for="catalog-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+
+              <input
+                type="search"
+                id="catalog-search"
+                placeholder="Buscar no catálogo..."
+                autocomplete="off"
+              />
+            </label>
+
+            <select id="catalog-type" class="catalog-select">
+              <option value="">Todos os tipos</option>
+              <option value="MOVIE">Filmes</option>
+              <option value="SERIES">Séries</option>
+              <option value="DOCUMENTARY">Documentários</option>
+              <option value="OTHER">Outros</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="catalog-grid" id="catalog-list">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+
+        <div class="empty-state hidden" id="catalog-empty">
+          <span class="empty-icon">
+            <i class="fa-solid fa-film"></i>
+          </span>
+
+          <h3>Nenhum conteúdo encontrado</h3>
+
+          <p>
+            Tente mudar a busca ou os filtros para encontrar outro título.
+          </p>
+        </div>
+
+        <div class="pagination-bar hidden" id="catalog-pagination">
+          <button
+            type="button"
+            class="pagination-button"
+            id="catalog-prev"
+          >
+            <i class="fa-solid fa-chevron-left"></i>
+            Anterior
+          </button>
+
+          <span class="pagination-copy" id="catalog-page-label">
+            Página 1 de 1
+          </span>
+
+          <button
+            type="button"
+            class="pagination-button"
+            id="catalog-next"
+          >
+            Próxima
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer-inner">
+        <div>
+          <strong>StreamOne</strong>
+          <span>Seu universo de histórias</span>
+        </div>
+
+        <small>
+          © 2026 StreamOne · Feito para quem ama boas histórias.
+        </small>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/presentation.js"></script>
+    <script src="./js/home.js"></script>
+  </body>
+</html>

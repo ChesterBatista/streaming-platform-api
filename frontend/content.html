@@ -1,0 +1,441 @@
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>StreamOne | Detalhes do conteúdo</title>
+
+    <meta
+      name="description"
+      content="Conheça os detalhes do conteúdo, acompanhe seu progresso e registre sua avaliação no StreamOne."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/content.css" />
+  </head>
+
+  <body class="content-page">
+    <!-- =========================================
+         CABEÇALHO
+    ========================================= -->
+
+    <header class="content-header">
+      <div class="container content-header-inner">
+        <a
+          class="content-brand"
+          href="./home.html"
+          aria-label="Voltar ao início do StreamOne"
+        >
+          <span class="content-brand-mark">
+            <i class="fa-solid fa-play"></i>
+          </span>
+
+          <span class="content-brand-name">
+            Stream<span>One</span>
+          </span>
+        </a>
+
+        <div class="content-header-actions">
+          <a href="./home.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Voltar ao catálogo</span>
+          </a>
+
+          <div class="content-profile">
+            <span
+              class="content-profile-avatar"
+              id="content-profile-avatar"
+              aria-hidden="true"
+            >
+              US
+            </span>
+
+            <span class="content-profile-info">
+              <strong id="content-profile-name">Usuário</strong>
+              <small>Assinante</small>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- =========================================
+         CONTEÚDO PRINCIPAL
+    ========================================= -->
+
+    <main id="content-main">
+      <!-- Estado de carregamento -->
+
+      <section
+        class="content-loading container"
+        id="content-loading"
+        aria-live="polite"
+      >
+        <div class="content-loading-art"></div>
+
+        <div class="content-loading-info">
+          <div class="content-loading-line short"></div>
+          <div class="content-loading-line title"></div>
+          <div class="content-loading-line"></div>
+          <div class="content-loading-line"></div>
+          <div class="content-loading-line medium"></div>
+        </div>
+      </section>
+
+      <!-- Estado de erro -->
+
+      <section
+        class="content-error container hidden"
+        id="content-error"
+        aria-live="polite"
+      >
+        <span class="content-error-icon">
+          <i class="fa-solid fa-film"></i>
+        </span>
+
+        <h1>Não foi possível abrir este conteúdo</h1>
+
+        <p id="content-error-message">
+          O conteúdo pode não estar disponível para sua assinatura.
+        </p>
+
+        <a href="./home.html" class="content-primary-button">
+          <i class="fa-solid fa-arrow-left"></i>
+          Voltar ao catálogo
+        </a>
+      </section>
+
+      <!-- =========================================
+           HERO DO CONTEÚDO
+      ========================================= -->
+
+      <section
+        class="content-hero hidden"
+        id="content-hero"
+        aria-labelledby="content-title"
+      >
+        <div
+          class="content-hero-backdrop"
+          id="content-hero-backdrop"
+          aria-hidden="true"
+        ></div>
+
+        <div class="content-hero-overlay"></div>
+
+        <div class="container content-hero-inner">
+          <div class="content-hero-copy">
+            <div class="content-hero-badges">
+              <span
+                class="badge badge-primary"
+                id="content-type"
+              >
+                Conteúdo
+              </span>
+
+              <span class="badge" id="content-year">
+                —
+              </span>
+            </div>
+
+            <h1 id="content-title">Carregando conteúdo...</h1>
+
+            <p
+              class="content-hero-synopsis"
+              id="content-synopsis"
+            ></p>
+
+            <div class="content-hero-meta">
+              <span id="content-duration">
+                <i class="fa-regular fa-clock"></i>
+                Duração indisponível
+              </span>
+
+              <span id="content-average-rating">
+                <i class="fa-regular fa-star"></i>
+                Avaliações indisponíveis
+              </span>
+            </div>
+
+            <div class="content-hero-actions">
+              <button
+                type="button"
+                class="content-primary-button"
+                id="watch-button"
+              >
+                <i class="fa-solid fa-circle-play"></i>
+                <span>Registrar progresso</span>
+              </button>
+
+              <button
+                type="button"
+                class="content-secondary-button"
+                id="rate-button"
+              >
+                <i class="fa-regular fa-star"></i>
+                <span>Avaliar conteúdo</span>
+              </button>
+            </div>
+
+            <p class="content-hero-note">
+              <i class="fa-solid fa-circle-info"></i>
+              Ambiente de demonstração: o progresso é registrado
+              pela API, sem reprodução de vídeo nesta versão.
+            </p>
+          </div>
+
+          <div class="content-hero-poster">
+            <div
+              class="content-poster-art"
+              id="content-poster-art"
+              role="img"
+              aria-label="Capa do conteúdo"
+            ></div>
+
+            <div class="content-poster-footer">
+              <span>
+                <i class="fa-solid fa-clapperboard"></i>
+                STREAMONE ORIGINAL
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+           INFORMAÇÕES E INTERAÇÕES
+      ========================================= -->
+
+      <div class="container content-details-layout hidden" id="content-details">
+        <div class="content-details-main">
+          <!-- Progresso pessoal -->
+
+          <section
+            class="content-detail-card"
+            aria-labelledby="progress-heading"
+          >
+            <div class="content-card-heading">
+              <span class="content-card-icon">
+                <i class="fa-solid fa-circle-play"></i>
+              </span>
+
+              <div>
+                <span class="content-section-eyebrow">
+                  Sua jornada
+                </span>
+
+                <h2 id="progress-heading">Meu progresso</h2>
+              </div>
+            </div>
+
+            <div class="content-progress-summary">
+              <strong id="progress-percentage">0%</strong>
+
+              <span id="progress-status">
+                Você ainda não iniciou este conteúdo.
+              </span>
+            </div>
+
+            <div
+              class="content-progress-track"
+              role="progressbar"
+              aria-label="Progresso de reprodução"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              id="content-progress-track"
+            >
+              <div
+                class="content-progress-fill"
+                id="content-progress-fill"
+              ></div>
+            </div>
+
+            <div class="content-progress-meta">
+              <span id="progress-watched">
+                0 minutos registrados
+              </span>
+
+              <span id="progress-total">
+                Duração total indisponível
+              </span>
+            </div>
+
+            <button
+              type="button"
+              class="content-inline-button"
+              id="update-progress-button"
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+              Atualizar meu progresso
+            </button>
+          </section>
+
+          <!-- Avaliação pessoal -->
+
+          <section
+            class="content-detail-card"
+            aria-labelledby="rating-heading"
+          >
+            <div class="content-card-heading">
+              <span class="content-card-icon rating-icon">
+                <i class="fa-solid fa-star"></i>
+              </span>
+
+              <div>
+                <span class="content-section-eyebrow">
+                  Sua opinião
+                </span>
+
+                <h2 id="rating-heading">Minha avaliação</h2>
+              </div>
+            </div>
+
+            <div class="content-personal-rating">
+              <div
+                class="content-rating-stars"
+                id="personal-rating-stars"
+                aria-label="Nenhuma avaliação registrada"
+              >
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+              </div>
+
+              <p id="personal-rating-message">
+                Você ainda não avaliou este conteúdo.
+              </p>
+
+              <blockquote
+                class="content-rating-comment hidden"
+                id="personal-rating-comment"
+              ></blockquote>
+            </div>
+
+            <button
+              type="button"
+              class="content-inline-button"
+              id="update-rating-button"
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+              Registrar minha avaliação
+            </button>
+          </section>
+        </div>
+
+        <!-- =========================================
+             PAINEL LATERAL
+        ========================================= -->
+
+        <aside class="content-details-sidebar">
+          <section
+            class="content-detail-card"
+            aria-labelledby="info-heading"
+          >
+            <div class="content-card-heading">
+              <span class="content-card-icon">
+                <i class="fa-solid fa-circle-info"></i>
+              </span>
+
+              <div>
+                <span class="content-section-eyebrow">
+                  Sobre este título
+                </span>
+
+                <h2 id="info-heading">Informações</h2>
+              </div>
+            </div>
+
+            <dl class="content-info-list">
+              <div>
+                <dt>Tipo</dt>
+                <dd id="info-type">—</dd>
+              </div>
+
+              <div>
+                <dt>Ano de lançamento</dt>
+                <dd id="info-year">—</dd>
+              </div>
+
+              <div>
+                <dt>Duração</dt>
+                <dd id="info-duration">—</dd>
+              </div>
+
+              <div>
+                <dt>Status</dt>
+                <dd>
+                  <span class="badge badge-success">
+                    Disponível
+                  </span>
+                </dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="content-access-card">
+            <span class="content-access-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </span>
+
+            <h3>Disponível na sua assinatura</h3>
+
+            <p>
+              Este título faz parte do seu plano. Aproveite e descubra mais histórias disponíveis para você.
+            </p>
+
+            <a href="./home.html#catalogo">
+              Explorar o catálogo
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <!-- =========================================
+         RODAPÉ
+    ========================================= -->
+
+    <footer class="content-footer">
+      <div class="container content-footer-inner">
+        <div>
+          <strong>StreamOne</strong>
+          <span>Seu universo de histórias</span>
+        </div>
+
+        <small>
+          © 2026 StreamOne · Feito para quem ama boas histórias.
+        </small>
+      </div>
+    </footer>
+
+    <!-- =========================================
+         SCRIPTS
+    ========================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/presentation.js"></script>
+    <script src="./js/content.js"></script>
+  </body>
+</html>

@@ -1,0 +1,739 @@
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>StreamOne Studio | Painel de gestão</title>
+
+    <meta
+      name="description"
+      content="Painel de gestão de conteúdos e serviços do StreamOne."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/admin.css" />
+  </head>
+
+  <body class="admin-page">
+    <div class="admin-shell">
+
+      <!-- =====================================
+           MENU LATERAL
+      ====================================== -->
+
+      <aside class="admin-sidebar" id="admin-sidebar">
+        <div class="sidebar-header">
+          <a
+            href="./admin.html"
+            class="studio-brand"
+            aria-label="StreamOne Studio"
+          >
+            <span class="studio-brand-mark">
+              <i class="fa-solid fa-play"></i>
+            </span>
+
+            <span class="studio-brand-copy">
+              <strong>StreamOne</strong>
+              <small>STUDIO</small>
+            </span>
+          </a>
+
+          <button
+            type="button"
+            class="sidebar-close"
+            id="sidebar-close"
+            aria-label="Fechar menu"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="sidebar-label">WORKSPACE</div>
+
+        <nav class="sidebar-nav" aria-label="Navegação do painel">
+          <button
+            type="button"
+            class="sidebar-link active"
+            data-section="overview"
+            aria-current="page"
+          >
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Visão geral</span>
+          </button>
+
+          <button
+            type="button"
+            class="sidebar-link"
+            data-section="contents"
+          >
+            <i class="fa-solid fa-clapperboard"></i>
+            <span>Conteúdos</span>
+          </button>
+
+          <button
+            type="button"
+            class="sidebar-link"
+            data-section="categories"
+          >
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Categorias</span>
+          </button>
+
+          <button
+            type="button"
+            class="sidebar-link admin-only hidden"
+            data-section="plans"
+          >
+            <i class="fa-solid fa-gem"></i>
+            <span>Planos</span>
+          </button>
+
+          <button
+            type="button"
+            class="sidebar-link admin-only hidden"
+            data-section="subscriptions"
+          >
+            <i class="fa-solid fa-ticket"></i>
+            <span>Assinaturas</span>
+          </button>
+
+          <button
+            type="button"
+            class="sidebar-link admin-only hidden"
+            data-section="users"
+          >
+            <i class="fa-solid fa-users"></i>
+            <span>Usuários</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-help">
+            <span class="sidebar-help-icon">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </span>
+
+            <strong>Seu espaço criativo</strong>
+
+            <p>
+              Organize o catálogo e prepare novas histórias
+              para o público.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            class="sidebar-logout"
+            id="admin-logout"
+          >
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <span>Encerrar sessão</span>
+          </button>
+        </div>
+      </aside>
+
+      <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+      <!-- =====================================
+           ÁREA PRINCIPAL
+      ====================================== -->
+
+      <div class="admin-workspace">
+
+        <!-- CABEÇALHO -->
+
+        <header class="admin-topbar">
+          <div class="admin-topbar-left">
+            <button
+              type="button"
+              class="admin-icon-button mobile-menu-button"
+              id="sidebar-toggle"
+              aria-label="Abrir menu"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="workspace-indicator">
+              <span class="workspace-indicator-dot"></span>
+              <span>StreamOne Studio</span>
+            </div>
+          </div>
+
+          <div class="admin-topbar-right">
+            <span class="environment-badge">
+              <i class="fa-solid fa-circle-check"></i>
+              Ambiente de demonstração
+            </span>
+
+            <div class="admin-user">
+              <span class="admin-user-avatar" id="admin-avatar">
+                US
+              </span>
+
+              <div class="admin-user-copy">
+                <strong id="admin-user-name">Carregando...</strong>
+                <small id="admin-user-role">Equipe StreamOne</small>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main class="admin-main">
+
+          <!-- =================================
+               VISÃO GERAL
+          ================================== -->
+
+          <section
+            class="admin-section"
+            id="section-overview"
+            aria-labelledby="overview-title"
+          >
+            <div class="page-heading">
+              <div>
+                <span class="page-eyebrow">
+                  SEU PAINEL DE GESTÃO
+                </span>
+
+                <h1 id="overview-title">
+                  Olá, <span id="admin-greeting-name">equipe</span>!
+                </h1>
+
+                <p>
+                  Acompanhe o catálogo e gerencie a experiência
+                  do StreamOne em um só lugar.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="admin-primary-button"
+                id="overview-create-content"
+              >
+                <i class="fa-solid fa-plus"></i>
+                Novo conteúdo
+              </button>
+            </div>
+
+            <div class="studio-welcome">
+              <div class="studio-welcome-copy">
+                <span class="studio-welcome-kicker">
+                  STREAMONE STUDIO
+                </span>
+
+                <h2>Grandes histórias começam nos bastidores.</h2>
+
+                <p>
+                  Prepare novos títulos, organize o catálogo e
+                  acompanhe o que está disponível para o público.
+                </p>
+
+                <button
+                  type="button"
+                  class="studio-welcome-button"
+                  id="overview-open-catalog"
+                >
+                  Explorar conteúdos
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+
+              <div class="studio-welcome-decoration" aria-hidden="true">
+                <i class="fa-solid fa-clapperboard"></i>
+              </div>
+            </div>
+
+            <!-- Indicadores preenchidos posteriormente
+                 com dados reais da API. -->
+
+            <div class="admin-stats" id="overview-stats">
+              <article class="stat-card">
+                <span class="stat-icon purple">
+                  <i class="fa-solid fa-film"></i>
+                </span>
+
+                <span class="stat-label">Conteúdos cadastrados</span>
+                <strong class="stat-value" id="stat-total-contents">—</strong>
+                <small>Catálogo da plataforma</small>
+              </article>
+
+              <article class="stat-card">
+                <span class="stat-icon green">
+                  <i class="fa-solid fa-circle-play"></i>
+                </span>
+
+                <span class="stat-label">Publicados</span>
+                <strong class="stat-value" id="stat-published">—</strong>
+                <small>Disponíveis para assinantes elegíveis</small>
+              </article>
+
+              <article class="stat-card">
+                <span class="stat-icon amber">
+                  <i class="fa-solid fa-pen-ruler"></i>
+                </span>
+
+                <span class="stat-label">Em preparação</span>
+                <strong class="stat-value" id="stat-drafts">—</strong>
+                <small>Conteúdos em rascunho</small>
+              </article>
+
+              <article class="stat-card">
+                <span class="stat-icon cyan">
+                  <i class="fa-solid fa-layer-group"></i>
+                </span>
+
+                <span class="stat-label">Categorias</span>
+                <strong class="stat-value" id="stat-categories">—</strong>
+                <small>Organização do catálogo</small>
+              </article>
+            </div>
+
+            <div class="admin-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="page-eyebrow">
+                    CATÁLOGO
+                  </span>
+
+                  <h2>Conteúdos em destaque</h2>
+                </div>
+
+                <button
+                  type="button"
+                  class="admin-text-button"
+                  id="overview-view-all"
+                >
+                  Ver todos
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+
+              <div class="overview-content-grid" id="overview-content-list">
+                <p class="admin-muted">
+                  Carregando conteúdos...
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- =================================
+               CONTEÚDOS
+          ================================== -->
+
+          <section
+            class="admin-section hidden"
+            id="section-contents"
+            aria-labelledby="contents-title"
+          >
+            <div class="page-heading">
+              <div>
+                <span class="page-eyebrow">
+                  BIBLIOTECA
+                </span>
+
+                <h1 id="contents-title">Conteúdos</h1>
+
+                <p>
+                  Gerencie títulos, publicações, categorias,
+                  planos de acesso e capas.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="admin-primary-button"
+                id="create-content-button"
+              >
+                <i class="fa-solid fa-plus"></i>
+                Adicionar conteúdo
+              </button>
+            </div>
+
+            <div class="admin-panel">
+              <div class="panel-heading panel-heading-wrap">
+                <div>
+                  <h2>Biblioteca de conteúdos</h2>
+                  <p id="contents-count-label">
+                    Consultando o catálogo...
+                  </p>
+                </div>
+
+                <div class="admin-filters">
+                  <label class="admin-search" for="admin-content-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                      type="search"
+                      id="admin-content-search"
+                      placeholder="Buscar título..."
+                      autocomplete="off"
+                    />
+                  </label>
+
+                  <select
+                    id="admin-content-status"
+                    class="admin-select"
+                    aria-label="Filtrar por status"
+                  >
+                    <option value="">Todos os status</option>
+                    <option value="DRAFT">Rascunho</option>
+                    <option value="PUBLISHED">Publicado</option>
+                    <option value="ARCHIVED">Arquivado</option>
+                  </select>
+
+                  <select
+                    id="admin-content-type"
+                    class="admin-select"
+                    aria-label="Filtrar por tipo"
+                  >
+                    <option value="">Todos os tipos</option>
+                    <option value="MOVIE">Filmes</option>
+                    <option value="SERIES">Séries</option>
+                    <option value="DOCUMENTARY">Documentários</option>
+                    <option value="OTHER">Outros</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="admin-table-scroll">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Conteúdo</th>
+                      <th scope="col">Tipo</th>
+                      <th scope="col">Ano</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Ações</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="admin-contents-body">
+                    <tr>
+                      <td colspan="5" class="table-empty">
+                        Carregando conteúdos...
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div
+                class="admin-pagination hidden"
+                id="admin-contents-pagination"
+              >
+                <button
+                  type="button"
+                  class="admin-page-button"
+                  id="admin-contents-prev"
+                >
+                  <i class="fa-solid fa-chevron-left"></i>
+                  Anterior
+                </button>
+
+                <span id="admin-contents-page-label">
+                  Página 1 de 1
+                </span>
+
+                <button
+                  type="button"
+                  class="admin-page-button"
+                  id="admin-contents-next"
+                >
+                  Próxima
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- =================================
+               CATEGORIAS
+          ================================== -->
+
+          <section
+            class="admin-section hidden"
+            id="section-categories"
+            aria-labelledby="categories-title"
+          >
+            <div class="page-heading">
+              <div>
+                <span class="page-eyebrow">ORGANIZAÇÃO</span>
+
+                <h1 id="categories-title">Categorias</h1>
+
+                <p>
+                  Organize os conteúdos por temas e gêneros.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="admin-primary-button"
+                id="create-category-button"
+              >
+                <i class="fa-solid fa-plus"></i>
+                Nova categoria
+              </button>
+            </div>
+
+            <div class="admin-panel">
+              <div class="panel-heading">
+                <div>
+                  <h2>Categorias cadastradas</h2>
+                  <p id="categories-count-label">
+                    Consultando categorias...
+                  </p>
+                </div>
+              </div>
+
+              <div class="admin-table-scroll">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Descrição</th>
+                      <th scope="col">Ações</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="admin-categories-body">
+                    <tr>
+                      <td colspan="3" class="table-empty">
+                        Carregando categorias...
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div
+                class="admin-pagination hidden"
+                id="admin-categories-pagination"
+              ></div>
+            </div>
+          </section>
+
+          <!-- =================================
+               PLANOS — SOMENTE ADMIN
+          ================================== -->
+
+          <section
+            class="admin-section admin-only hidden"
+            id="section-plans"
+            aria-labelledby="plans-title"
+          >
+            <div class="page-heading">
+              <div>
+                <span class="page-eyebrow">
+                  ADMINISTRAÇÃO
+                </span>
+
+                <h1 id="plans-title">Planos</h1>
+
+                <p>
+                  Gerencie os planos de acesso disponíveis
+                  na plataforma.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="admin-primary-button"
+                id="create-plan-button"
+              >
+                <i class="fa-solid fa-plus"></i>
+                Novo plano
+              </button>
+            </div>
+
+            <div class="admin-panel">
+              <div class="panel-heading">
+                <h2>Planos cadastrados</h2>
+              </div>
+
+              <div id="admin-plans-list" class="admin-plans-grid">
+                <p class="admin-muted">
+                  Carregando planos...
+                </p>
+              </div>
+
+              <div
+                class="admin-pagination hidden"
+                id="admin-plans-pagination"
+              ></div>
+            </div>
+          </section>
+
+          <!-- =================================
+               ASSINATURAS — SOMENTE ADMIN
+          ================================== -->
+
+          <section
+            class="admin-section admin-only hidden"
+            id="section-subscriptions"
+            aria-labelledby="subscriptions-title"
+          >
+            <div class="page-heading">
+              <div>
+                <span class="page-eyebrow">
+                  ADMINISTRAÇÃO
+                </span>
+
+                <h1 id="subscriptions-title">
+                  Assinaturas
+                </h1>
+
+                <p>
+                  Acompanhe os planos contratados e
+                  gerencie o status das assinaturas.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="admin-primary-button"
+                id="create-subscription-button"
+              >
+                <i class="fa-solid fa-plus"></i>
+                Nova assinatura
+              </button>
+            </div>
+
+            <div class="admin-panel">
+              <div class="panel-heading">
+                <h2>Assinaturas cadastradas</h2>
+              </div>
+
+              <div class="admin-table-scroll">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Usuário</th>
+                      <th scope="col">Plano</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Vigência</th>
+                      <th scope="col">Ações</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="admin-subscriptions-body">
+                    <tr>
+                      <td colspan="6" class="table-empty">
+                        Carregando assinaturas...
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div
+                class="admin-pagination hidden"
+                id="admin-subscriptions-pagination"
+              ></div>
+            </div>
+          </section>
+
+          <!-- =================================
+               USUÁRIOS — SOMENTE ADMIN
+          ================================== -->
+
+          <section
+            class="admin-section admin-only hidden"
+            id="section-users"
+            aria-labelledby="users-title"
+          >
+            <div class="page-heading">
+              <div>
+                <span class="page-eyebrow">
+                  ADMINISTRAÇÃO
+                </span>
+
+                <h1 id="users-title">Usuários</h1>
+
+                <p>
+                  Consulte os usuários cadastrados
+                  na plataforma.
+                </p>
+              </div>
+            </div>
+
+            <div class="admin-panel">
+              <div class="panel-heading">
+                <h2>Usuários cadastrados</h2>
+              </div>
+
+              <div class="admin-table-scroll">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Usuário</th>
+                      <th scope="col">E-mail</th>
+                      <th scope="col">Perfil</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="admin-users-body">
+                    <tr>
+                      <td colspan="4" class="table-empty">
+                        Carregando usuários...
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div
+                class="admin-pagination hidden"
+                id="admin-users-pagination"
+              ></div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- =====================================
+             RODAPÉ
+        ====================================== -->
+
+        <footer class="admin-footer">
+          <span>StreamOne Studio</span>
+
+          <span>
+            Criando experiências que merecem ser assistidas.
+          </span>
+        </footer>
+      </div>
+    </div>
+
+    <!-- =====================================
+         SCRIPTS
+    ====================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/presentation.js"></script>
+    <script src="./js/admin-forms.js"></script>
+    <script src="./js/admin.js"></script>
+  </body>
+</html>

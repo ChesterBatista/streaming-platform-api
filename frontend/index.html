@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Streaming Platform | Entrar</title>
+
+    <meta
+      name="description"
+      content="Acesse sua conta na Streaming Platform."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/login.css" />
+  </head>
+
+  <body class="login-page">
+    <main class="login-shell">
+      <section class="login-showcase">
+        <div class="showcase-overlay"></div>
+
+        <div class="showcase-content">
+          <a class="brand" href="./index.html" aria-label="Streaming Platform">
+            <span class="brand-mark">
+              <i class="fa-solid fa-play"></i>
+            </span>
+
+            <span class="brand-text">Stream<span>One</span></span>
+          </a>
+
+          <div class="showcase-copy">
+            <span class="eyebrow">Sua próxima história começa aqui</span>
+
+            <h1>
+              Entre.
+              <br />
+              Assista.
+              <br />
+              <span>Viva a história.</span>
+            </h1>
+
+            <p>
+              Filmes, séries e documentários em uma experiência criada para
+              colocar o conteúdo no centro de tudo.
+            </p>
+
+            <div class="showcase-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">
+                  <i class="fa-solid fa-film"></i>
+                </span>
+
+                <div>
+                  <strong>Catálogo premium</strong>
+                  <small>Conteúdos selecionados para você</small>
+                </div>
+              </div>
+
+              <div class="highlight-item">
+                <span class="highlight-icon">
+                  <i class="fa-solid fa-circle-play"></i>
+                </span>
+
+                <div>
+                  <strong>Continue de onde parou</strong>
+                  <small>Seu progresso acompanha você</small>
+                </div>
+              </div>
+
+              <div class="highlight-item">
+                <span class="highlight-icon">
+                  <i class="fa-solid fa-star"></i>
+                </span>
+
+                <div>
+                  <strong>Sua opinião importa</strong>
+                  <small>Avalie os conteúdos que assistir</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="showcase-footer">
+            Streaming Platform API · Projeto de demonstração
+          </p>
+        </div>
+      </section>
+
+      <section class="login-panel">
+        <div class="login-card">
+          <div class="login-heading">
+            <span class="login-kicker">Bem-vindo de volta</span>
+
+            <h2>Entre na sua conta</h2>
+
+            <p>
+              Use suas credenciais para acessar sua experiência personalizada.
+            </p>
+          </div>
+
+          <form id="login-form" class="login-form" novalidate>
+            <div class="form-field">
+              <label for="email">E-mail</label>
+
+              <div class="input-shell">
+                <span class="input-icon">
+                  <i class="fa-regular fa-envelope"></i>
+                </span>
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="seuemail@exemplo.com"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+
+              <small class="field-error" id="email-error"></small>
+            </div>
+
+            <div class="form-field">
+              <div class="field-label-row">
+                <label for="password">Senha</label>
+
+                <span class="field-helper">Mínimo de 8 caracteres</span>
+              </div>
+
+              <div class="input-shell">
+                <span class="input-icon">
+                  <i class="fa-solid fa-lock"></i>
+                </span>
+
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Digite sua senha"
+                  autocomplete="current-password"
+                  required
+                />
+
+                <button
+                  type="button"
+                  class="password-toggle"
+                  id="password-toggle"
+                  aria-label="Mostrar senha"
+                  title="Mostrar senha"
+                >
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+
+              <small class="field-error" id="password-error"></small>
+            </div>
+
+            <button type="submit" class="login-button" id="login-button">
+              <span class="button-label">Entrar na plataforma</span>
+
+              <span class="button-icon">
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
+            </button>
+          </form>
+
+          <div class="login-divider">
+            <span></span>
+            <small>Acesso de demonstração</small>
+            <span></span>
+          </div>
+
+          <div class="demo-access">
+            <div class="demo-access-header">
+              <div>
+                <strong>Contas disponíveis</strong>
+                <small>Ambiente local de demonstração</small>
+              </div>
+
+              <i class="fa-solid fa-flask"></i>
+            </div>
+
+            <div class="demo-users">
+              <button
+                type="button"
+                class="demo-user"
+                data-email="subscriber.demo@streaming.local"
+                data-password="DemoStreaming@123"
+              >
+                <span class="demo-avatar">SD</span>
+
+                <span class="demo-user-copy">
+                  <strong>Assinante</strong>
+                  <small>subscriber.demo@streaming.local</small>
+                </span>
+
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+
+              <button
+                type="button"
+                class="demo-user"
+                data-email="manager.demo@streaming.local"
+                data-password="DemoStreaming@123"
+              >
+                <span class="demo-avatar">MG</span>
+
+                <span class="demo-user-copy">
+                  <strong>Gestor de Conteúdo</strong>
+                  <small>manager.demo@streaming.local</small>
+                </span>
+
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+
+              <button
+                type="button"
+                class="demo-user"
+                data-email="admin.demo@streaming.local"
+                data-password="DemoStreaming@123"
+              >
+                <span class="demo-avatar">AD</span>
+
+                <span class="demo-user-copy">
+                  <strong>Administrador</strong>
+                  <small>admin.demo@streaming.local</small>
+                </span>
+
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <p class="login-note">
+            As credenciais acima são destinadas somente ao ambiente local de
+            demonstração.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/login.js"></script>
+  </body>
+</html>

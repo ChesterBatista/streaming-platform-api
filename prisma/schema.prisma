@@ -1,0 +1,205 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  SUBSCRIBER
+  CONTENT_MANAGER
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum PlanStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  INACTIVE
+  CANCELLED
+  EXPIRED
+}
+
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum ContentType {
+  MOVIE
+  SERIES
+  DOCUMENTARY
+  OTHER
+}
+
+model User {
+  id       Int        @id @default(autoincrement())
+  name     String     @db.VarChar(120)
+  email    String     @unique @db.VarChar(180)
+  password String
+  role     UserRole   @default(SUBSCRIBER)
+  status   UserStatus @default(ACTIVE)
+
+  subscriptions Subscription[]
+  watchHistory  WatchHistory[]
+  ratings       Rating[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Plan {
+  id          Int        @id @default(autoincrement())
+  name        String     @unique @db.VarChar(100)
+  description String?    @db.VarChar(500)
+  price       Decimal    @db.Decimal(10, 2)
+  status      PlanStatus @default(ACTIVE)
+
+  subscriptions Subscription[]
+  contents      PlanContent[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("plans")
+}
+
+model Subscription {
+  id        Int                @id @default(autoincrement())
+  userId    Int
+  planId    Int
+  status    SubscriptionStatus @default(ACTIVE)
+  startsAt  DateTime           @default(now())
+  expiresAt DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Restrict)
+  plan Plan @relation(fields: [planId], references: [id], onDelete: Restrict)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([planId])
+  @@index([status])
+  @@map("subscriptions")
+}
+
+model Content {
+  id              Int           @id @default(autoincrement())
+  title           String        @db.VarChar(180)
+  synopsis        String?       @db.Text
+  type            ContentType
+  status          ContentStatus @default(DRAFT)
+  releaseYear     Int?
+  durationMinutes Int?
+  thumbnailUrl    String?
+  externalId      String?       @unique @db.VarChar(120)
+
+  categories   ContentCategory[]
+  plans        PlanContent[]
+  watchHistory WatchHistory[]
+  ratings      Rating[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([type])
+  @@map("contents")
+}
+
+model Category {
+  id          Int     @id @default(autoincrement())
+  name        String  @unique @db.VarChar(100)
+  description String? @db.VarChar(300)
+
+  contents ContentCategory[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("categories")
+}
+
+model ContentCategory {
+  contentId  Int
+  categoryId Int
+
+  content  Content  @relation(fields: [contentId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+
+  createdAt DateTime @default(now())
+
+  @@id([contentId, categoryId])
+  @@index([categoryId])
+  @@map("content_categories")
+}
+
+model PlanContent {
+  planId    Int
+  contentId Int
+
+  plan    Plan    @relation(fields: [planId], references: [id], onDelete: Cascade)
+  content Content @relation(fields: [contentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@id([planId, contentId])
+  @@index([contentId])
+  @@map("plan_contents")
+}
+
+model WatchHistory {
+  id              Int      @id @default(autoincrement())
+  userId          Int
+  contentId       Int
+  progressSeconds Int      @default(0)
+  completed       Boolean  @default(false)
+  lastWatchedAt   DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content Content @relation(fields: [contentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, contentId])
+  @@index([userId])
+  @@index([contentId])
+  @@map("watch_history")
+}
+
+model Rating {
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  contentId Int
+  score     Int
+  comment   String? @db.VarChar(1000)
+  isActive  Boolean @default(true)
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content Content @relation(fields: [contentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, contentId])
+  @@index([userId])
+  @@index([contentId])
+  @@index([isActive])
+  @@map("ratings")
+}
